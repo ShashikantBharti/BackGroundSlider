@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <div class="back-image"></div>
+    <div class="slider">
+        <a href="#" class="leftArr"><i class="fa-solid fa-chevron-left"></i></a>
+        <img src="./images/Slide_1.jpg" alt="Soldiers">
+        <a href="#" class="rightArr"><i class="fa-solid fa-chevron-right"></i></a>
+    </div>
+
+    <script>
+        const slides = ['Slide_1.jpg','Slide_2.jpg','Slide_3.jpg','Slide_4.jpg','Slide_5.jpg']
+              left = document.querySelector('.leftArr')
+              right = document.querySelector('.rightArr')
+              backImage = document.querySelector('.back-image')
+              image = document.querySelector('img')
+              path = './images/'
+
+        function changeImage(i) {
+            backImage.style.backgroundImage = `url(${path+slides[i]})`
+            image.src = `${path+slides[i]}`
+        }
+
+        let i = 0
+        left.addEventListener('click', (e) => {
+            e.preventDefault();
+            if(i < 0) i = slides.length - 1
+            changeImage(i)
+            i -= 1
+        });
+
+        right.addEventListener('click', (e) => {
+            e.preventDefault();
+            if(i == 5) i = 0
+            changeImage(i)
+            i += 1
+        });
+
+    </script>
+</body>
+</html>
